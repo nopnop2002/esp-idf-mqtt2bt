@@ -3,7 +3,7 @@ MQTT to Bluetooth bridge for ESP-IDF
 
 ![classic-2](https://github.com/nopnop2002/esp-idf-mqtt2bt/assets/6020549/30d65ad1-6ba6-4930-9acd-2b69cf9c87ef)
 
-[mqtt2bt.pptx](https://github.com/nopnop2002/esp-idf-mqtt2bt/files/14892022/mqtt2bt.pptx)
+![mqtt2bt](https://github.com/nopnop2002/esp-idf-mqtt2bt/assets/6020549/4d03b755-c338-44d0-a8a7-31bb6f9299d9)
 
 # Software requirements
 ESP-IDF V4.4/V5.x.   
@@ -31,7 +31,7 @@ idf.py menuconfig
 idf.py flash
 ```
 
-__Note for ESP32C2__
+__Note for ESP32C2__   
 It cannot be executed because the RAM is small.
 
 
