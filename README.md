@@ -54,6 +54,8 @@ MQTT broker is specified by one of the following.
 
 You can download the MQTT broker from [here](https://github.com/nopnop2002/esp-idf-mqtt-broker).   
 
+Wildcards can be used in Subscribe topic.   
+
 ![config-broker-1](https://github.com/nopnop2002/esp-idf-mqtt2bt/assets/6020549/527f1b35-56f4-4a48-aaba-3771535c88cf)
 
 Specifies the username and password if the server requires a password when connecting.   
