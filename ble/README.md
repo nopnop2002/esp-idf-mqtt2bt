@@ -18,5 +18,5 @@ Menu->Devices->Bluetooth LE
 ![ble-2](https://user-images.githubusercontent.com/6020549/184459827-f62dc206-6bc2-41a7-9a88-74b9c84bbb89.JPG)
 
 - Connect to device   
-You can communicate to MQTT using android/iphone.   
+You can communicate to MQTT using android/iOS.   
 ![ble-3](https://github.com/nopnop2002/esp-idf-mqtt2bt/assets/6020549/e970084e-e5a7-4685-aa44-953b74289c48)
