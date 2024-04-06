@@ -3,7 +3,8 @@ MQTT to Bluetooth bridge for ESP-IDF
 
 ![classic-2](https://github.com/nopnop2002/esp-idf-mqtt2bt/assets/6020549/30d65ad1-6ba6-4930-9acd-2b69cf9c87ef)
 
-![mqtt2bt](https://github.com/nopnop2002/esp-idf-mqtt2bt/assets/6020549/4d03b755-c338-44d0-a8a7-31bb6f9299d9)
+![mqtt2bt](https://github.com/nopnop2002/esp-idf-mqtt2bt/assets/6020549/ce1d70f7-ca03-44e4-8062-449e88d6b7ec)
+
 
 # Software requirements
 ESP-IDF V4.4/V5.x.   
