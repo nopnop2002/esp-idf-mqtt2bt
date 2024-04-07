@@ -1,5 +1,8 @@
-# For ble 4.2
+# ble
+MQTT to Bluetooth bridge for ESP-IDF.   
+Use ble 4.2.   
 
+# Android Application   
 - For ESP32, pair with ESP32_SPP_SERVER   
 
 - For ESP32S3, pair with ESP32S3_SPP_SERVER   
@@ -20,3 +23,6 @@ Menu->Devices->Bluetooth LE
 - Connect to device   
 You can communicate to MQTT using android/iOS.   
 ![ble-3](https://github.com/nopnop2002/esp-idf-mqtt2bt/assets/6020549/e970084e-e5a7-4685-aa44-953b74289c48)
+
+# iOS Application   
+[This](https://apps.apple.com/jp/app/bluetooth-v2-1-spp-setup/id6449416841) might work, but I don't have iOS so I don't know.   
