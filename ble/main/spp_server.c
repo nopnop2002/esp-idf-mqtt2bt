@@ -291,7 +291,7 @@ static void show_bonded_devices(void)
 	ESP_LOGI(__FUNCTION__, "Bonded devices number : %d", dev_num);
 	ESP_LOGI(__FUNCTION__, "Bonded devices list : %d", dev_num);
 	for (int i = 0; i < dev_num; i++) {
-		esp_log_buffer_hex(__FUNCTION__, (void *)dev_list[i].bd_addr, sizeof(esp_bd_addr_t));
+		ESP_LOG_BUFFER_HEXDUMP(__FUNCTION__, (void *)dev_list[i].bd_addr, sizeof(esp_bd_addr_t), ESP_LOG_INFO);
 	}
 
 	free(dev_list);
@@ -386,7 +386,7 @@ static void gap_event_handler(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param
 		ESP_LOGD(__FUNCTION__, "ESP_GAP_BLE_REMOVE_BOND_DEV_COMPLETE_EVT status = %d", param->remove_bond_dev_cmpl.status);
 		ESP_LOGI(__FUNCTION__, "ESP_GAP_BLE_REMOVE_BOND_DEV");
 		ESP_LOGI(__FUNCTION__, "-----ESP_GAP_BLE_REMOVE_BOND_DEV----");
-		esp_log_buffer_hex(__FUNCTION__, (void *)param->remove_bond_dev_cmpl.bd_addr, sizeof(esp_bd_addr_t));
+		ESP_LOG_BUFFER_HEXDUMP(__FUNCTION__, (void *)param->remove_bond_dev_cmpl.bd_addr, sizeof(esp_bd_addr_t), ESP_LOG_INFO);
 		ESP_LOGI(__FUNCTION__, "------------------------------------");
 		break;
 	}
@@ -451,7 +451,7 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
 			uint8_t res = find_char_and_desr_index(p_data->write.handle);
 			ESP_LOGI(__FUNCTION__, "find_char_and_desr_index=%d", res);
 			if (res == SPP_IDX_SPP_DATA_RECV_VAL) {
-				esp_log_buffer_hex(__FUNCTION__, param->write.value, param->write.len);
+				ESP_LOG_BUFFER_HEXDUMP(__FUNCTION__, param->write.value, param->write.len, ESP_LOG_INFO);
 				cmdBuf.spp_event_id = SPP_WRITE_EVT;
 				cmdBuf.length = param->write.len;
 				if (cmdBuf.length > PAYLOAD_SIZE) cmdBuf.length = PAYLOAD_SIZE;

@@ -1,10 +1,11 @@
-/* MQTT (over TCP) Example
+/*
+	MQTT (over TCP) Example
 
-   This example code is in the Public Domain (or CC0 licensed, at your option.)
+	This example code is in the Public Domain (or CC0 licensed, at your option.)
 
-   Unless required by applicable law or agreed to in writing, this
-   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-   CONDITIONS OF ANY KIND, either express or implied.
+	Unless required by applicable law or agreed to in writing, this
+	software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+	CONDITIONS OF ANY KIND, either express or implied.
 */
 
 #include <stdio.h>
@@ -92,7 +93,7 @@ void mqtt_pub(void *pvParameters)
 	uint8_t mac[8];
 	ESP_ERROR_CHECK(esp_base_mac_addr_get(mac));
 	for(int i=0;i<8;i++) {
-		ESP_LOGI(TAG, "mac[%d]=%x", i, mac[i]);
+		ESP_LOGD(TAG, "mac[%d]=%x", i, mac[i]);
 	}
 	char client_id[64];
 	sprintf(client_id, "pub-%02x%02x%02x%02x%02x%02x", mac[0],mac[1],mac[2],mac[3],mac[4],mac[5]);
