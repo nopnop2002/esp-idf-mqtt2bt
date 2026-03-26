@@ -158,7 +158,7 @@ void mqtt_sub(void *pvParameters)
 			ESP_LOGI(TAG, "DATA=[%.*s]\r", cmdBuf.length, cmdBuf.payload);
 			cmdBuf.spp_event_id = SPP_SUBSCRIBE_EVT;
 			BaseType_t err = xQueueSend(xQueueSpp, &cmdBuf, portMAX_DELAY);
-			if (err != pdTRUE) {
+			if (err != pdPASS) {
 				ESP_LOGE(pcTaskGetName(NULL), "xQueueSend Fail");
 			}
 		} else if (cmdBuf.mqtt_event_id == MQTT_EVENT_ERROR) {

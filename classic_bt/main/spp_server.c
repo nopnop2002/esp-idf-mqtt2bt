@@ -76,7 +76,7 @@ static void esp_spp_cb(esp_spp_cb_event_t event, esp_spp_cb_param_t *param)
 		cmdBuf.spp_event_id = SPP_CLOSE_EVT;
 		cmdBuf.spp_handle = param->data_ind.handle;
 		err = xQueueSendFromISR(xQueueSpp, &cmdBuf, NULL);
-		if (err != pdTRUE) {
+		if (err != pdPASS) {
 			ESP_LOGE(TAG, "xQueueSendFromISR Fail");
 		}
 		break;
@@ -106,7 +106,7 @@ static void esp_spp_cb(esp_spp_cb_event_t event, esp_spp_cb_param_t *param)
 		if (cmdBuf.length > PAYLOAD_SIZE) cmdBuf.length = PAYLOAD_SIZE;
 		memcpy(cmdBuf.payload, (char *)param->data_ind.data, cmdBuf.length);
 		err = xQueueSendFromISR(xQueueSpp, &cmdBuf, NULL);
-		if (err != pdTRUE) {
+		if (err != pdPASS) {
 			ESP_LOGE(TAG, "xQueueSendFromISR Fail");
 		}
 		break;
@@ -119,7 +119,7 @@ static void esp_spp_cb(esp_spp_cb_event_t event, esp_spp_cb_param_t *param)
 			ESP_LOGE(TAG, "ESP_SPP_WRITE_EVT status:%d", param->write.status);
 			cmdBuf.spp_event_id = SPP_ERROR_EVT;
 			err = xQueueSendFromISR(xQueueSpp, &cmdBuf, NULL);
-			if (err != pdTRUE) {
+			if (err != pdPASS) {
 				ESP_LOGE(TAG, "xQueueSendFromISR Fail");
 			}
 		}
@@ -127,7 +127,7 @@ static void esp_spp_cb(esp_spp_cb_event_t event, esp_spp_cb_param_t *param)
 			ESP_LOGE(TAG, "ESP_SPP_WRITE_EVT cong:%d", param->write.cong);
 			cmdBuf.spp_event_id = SPP_ERROR_EVT;
 			err = xQueueSendFromISR(xQueueSpp, &cmdBuf, NULL);
-			if (err != pdTRUE) {
+			if (err != pdPASS) {
 				ESP_LOGE(TAG, "xQueueSendFromISR Fail");
 			}
 		}
@@ -138,7 +138,7 @@ static void esp_spp_cb(esp_spp_cb_event_t event, esp_spp_cb_param_t *param)
 		cmdBuf.spp_event_id = SPP_SRV_OPEN_EVT;
 		cmdBuf.spp_handle = param->data_ind.handle;
 		err = xQueueSendFromISR(xQueueSpp, &cmdBuf, NULL);
-		if (err != pdTRUE) {
+		if (err != pdPASS) {
 			ESP_LOGE(TAG, "xQueueSendFromISR Fail");
 		}
 		break;
@@ -353,7 +353,7 @@ void spp_task(void* pvParameters)
 			if (cmdBuf.length == 0) continue;
 			cmdBuf.mqtt_event_id = SPP_PUBLISHE_EVT;
 			BaseType_t err = xQueueSend(xQueuePublish, &cmdBuf, portMAX_DELAY);
-			if (err != pdTRUE) {
+			if (err != pdPASS) {
 				ESP_LOGE(pcTaskGetName(NULL), "xQueueSend Fail");
 			}
 		} else if (cmdBuf.spp_event_id == SPP_ERROR_EVT) {

@@ -377,7 +377,7 @@ static void gap_event_handler(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param
 
 		cmdBuf.spp_event_id = SPP_AUTH_EVT;
 		err = xQueueSendFromISR(xQueueSpp, &cmdBuf, NULL);
-		if (err != pdTRUE) {
+		if (err != pdPASS) {
 			ESP_LOGE(TAG, "xQueueSendFromISR Fail");
 		}
 		break;
@@ -457,7 +457,7 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
 				if (cmdBuf.length > PAYLOAD_SIZE) cmdBuf.length = PAYLOAD_SIZE;
 				memcpy(cmdBuf.payload, (char *)param->write.value, cmdBuf.length);
 				err = xQueueSendFromISR(xQueueSpp, &cmdBuf, NULL);
-				if (err != pdTRUE) {
+				if (err != pdPASS) {
 					ESP_LOGE(TAG, "xQueueSendFromISR Fail");
 				}
 			}
@@ -484,7 +484,7 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
 			cmdBuf.spp_conn_id = p_data->connect.conn_id;
 			cmdBuf.spp_gatts_if = gatts_if;
 			err = xQueueSendFromISR(xQueueSpp, &cmdBuf, NULL);
-			if (err != pdTRUE) {
+			if (err != pdPASS) {
 				ESP_LOGE(TAG, "xQueueSendFromISR Fail");
 			}
 			break;
@@ -492,7 +492,7 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
 			ESP_LOGI(__FUNCTION__, "ESP_GATTS_DISCONNECT_EVT, disconnect reason 0x%x", param->disconnect.reason);
 			cmdBuf.spp_event_id = SPP_DISCONNECT_EVT;
 			err = xQueueSendFromISR(xQueueSpp, &cmdBuf, NULL);
-			if (err != pdTRUE) {
+			if (err != pdPASS) {
 				ESP_LOGE(TAG, "xQueueSendFromISR Fail");
 			}
 			/* start advertising again when missing the connect */
@@ -699,7 +699,7 @@ void spp_task(void * arg)
 			if (cmdBuf.length == 0) continue;
 			cmdBuf.mqtt_event_id = SPP_PUBLISHE_EVT;
 			BaseType_t err = xQueueSend(xQueuePublish, &cmdBuf, portMAX_DELAY);
-			if (err != pdTRUE) {
+			if (err != pdPASS) {
 				ESP_LOGE(pcTaskGetName(NULL), "xQueueSend Fail");
 			}
 		}

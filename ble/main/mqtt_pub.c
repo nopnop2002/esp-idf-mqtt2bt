@@ -42,14 +42,14 @@ static esp_err_t mqtt_event_handler(esp_mqtt_event_handle_t event)
 		case MQTT_EVENT_CONNECTED:
 			ESP_LOGI(TAG, "MQTT_EVENT_CONNECTED");
 			err = xQueueSendFromISR(xQueuePublish, &cmdBuf, NULL);
-			if (err != pdTRUE) {
+			if (err != pdPASS) {
 				ESP_LOGE(TAG, "xQueueSendFromISR Fail");
 			}
 			break;
 		case MQTT_EVENT_DISCONNECTED:
 			ESP_LOGI(TAG, "MQTT_EVENT_DISCONNECTED");
 			err = xQueueSendFromISR(xQueuePublish, &cmdBuf, NULL);
-			if (err != pdTRUE) {
+			if (err != pdPASS) {
 				ESP_LOGE(TAG, "xQueueSendFromISR Fail");
 			}
 			break;
@@ -68,7 +68,7 @@ static esp_err_t mqtt_event_handler(esp_mqtt_event_handle_t event)
 		case MQTT_EVENT_ERROR:
 			ESP_LOGI(TAG, "MQTT_EVENT_ERROR");
 			err = xQueueSendFromISR(xQueuePublish, &cmdBuf, NULL);
-			if (err != pdTRUE) {
+			if (err != pdPASS) {
 				ESP_LOGE(TAG, "xQueueSendFromISR Fail");
 			}
 			break;
